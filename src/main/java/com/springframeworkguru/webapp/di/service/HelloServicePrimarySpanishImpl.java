@@ -1,17 +1,18 @@
 package com.springframeworkguru.webapp.di.service;
 
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Service;
+import com.springframeworkguru.webapp.di.repository.HelloRepository;
 
-@Service
-@Profile("es")
-@Primary
 public class HelloServicePrimarySpanishImpl implements HelloService {
+
+    private HelloRepository helloRepository;
+    
+    public HelloServicePrimarySpanishImpl(HelloRepository helloRepository) {
+        this.helloRepository = helloRepository;
+    }
 
     @Override
     public String sayHello() {
-        return "Servicio di Salodo Primario!";
+        return helloRepository.getSpanishGreeting();
     }
 
 }
