@@ -1,0 +1,6 @@
+h2:
+  sfg:
+    petclinic:
+      user: Michael
+      password: h2password
+      url: "http://h2.com"
