@@ -10,21 +10,20 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "BOOKS")
-@AttributeOverride(name="id", column=@Column(name="BOOK_ID"))
-@SequenceGenerator(name="default_seq", sequenceName="BOOK_SEQ", allocationSize=1)
+@Table(name = "books")
+@AttributeOverride(name="id", column=@Column(name="book_id"))
+//@SequenceGenerator(name="default_seq", sequenceName="book_seq", allocationSize=1)
 public class Book extends BaseEntity {
     
     private static final long serialVersionUID = 1L;
     
-    @Column(name="TITLE")
+    @Column(name="title")
     private String title;
     
-    @Column(name="ISBN")
+    @Column(name="isbn")
     private String isbn;
     
     @OneToOne
@@ -32,14 +31,14 @@ public class Book extends BaseEntity {
     private Publisher publisher;
 
     @ManyToMany
-    @JoinTable(name = "AUTHOR_BOOK",
+    @JoinTable(name = "author_book",
             joinColumns = @JoinColumn(
-                    name = "BOOK_ID",
-                    referencedColumnName = "BOOK_ID"
+                    name = "book_id",
+                    referencedColumnName = "book_id"
             ),
             inverseJoinColumns = @JoinColumn(
-                    name = "AUTHOR_ID",
-                    referencedColumnName = "AUTHOR_ID"
+                    name = "author_id",
+                    referencedColumnName = "author_id"
             ))
     private Set<Author> authors = new HashSet<>();
 

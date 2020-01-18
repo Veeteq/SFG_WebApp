@@ -1,25 +1,28 @@
 package com.springframeworkguru.webapp.entity;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "PUBLISHERS")
-@AttributeOverride(name="id", column=@Column(name="PUBLISHER_ID"))
-@SequenceGenerator(name="default_seq", sequenceName="PUBLISHER_SEQ", allocationSize=1)
+@Table(name = "publishers")
+@AttributeOverride(name="id", column=@Column(name="publisher_id"))
+//@SequenceGenerator(name="default_seq", sequenceName="publisher_seq", allocationSize=1)
 public class Publisher extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @Column(name="NAME")
+    @Column(name="name")
     private String name;
     
-    @Column(name="CITY")
+    @Column(name="city")
     private String city;
 
+    @Column(name = "last_update", columnDefinition = "timestamp default current_timestamp", updatable= false, insertable=false)
+    private LocalDateTime lastUpdate;
     
     public Publisher() {
     }
@@ -45,8 +48,16 @@ public class Publisher extends BaseEntity {
         this.city = city;
     }
 
+    public LocalDateTime getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(LocalDateTime lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
     @Override
     public String toString() {
-        return "Publisher [name=" + name + ", city=" + city + "]";
+        return "Publisher [id=" + super.getId() + ", name=" + name + ", city=" + city + "]";
     }
 }

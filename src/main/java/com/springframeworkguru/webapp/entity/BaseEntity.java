@@ -13,7 +13,7 @@ public abstract class BaseEntity implements Serializable, Comparable<BaseEntity>
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="default_seq")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     
     public Long getId() {

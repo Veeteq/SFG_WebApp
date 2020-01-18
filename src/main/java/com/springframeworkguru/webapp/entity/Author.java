@@ -7,21 +7,20 @@ import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "AUTHORS")
-@AttributeOverride(name="id", column=@Column(name="AUTHOR_ID"))
-@SequenceGenerator(name="default_seq", sequenceName="AUTHOR_SEQ", allocationSize=1)
+@Table(name = "authors")
+@AttributeOverride(name="id", column=@Column(name="author_id"))
+//@SequenceGenerator(name="default_seq", sequenceName="author_seq", allocationSize=1)
 public class Author extends BaseEntity {
     
     private static final long serialVersionUID = 1L;
     
-    @Column(name="FIRST_NAME")
+    @Column(name="first_name")
     private String firstName;
     
-    @Column(name="LAST_NAME")
+    @Column(name="last_name")
     private String lastName;
 
     @ManyToMany(mappedBy = "authors")

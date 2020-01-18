@@ -19,7 +19,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent>{
     private BookRepository bookRepository;
     private PublisherRepository publisherRepository;
     
-    private final boolean canLoad = false; 
+    private final boolean canLoad = true; 
 
     @Autowired
     public DevBootstrap(AuthorRepository authorRepository, BookRepository bookRepository, PublisherRepository publisherRepository) {
