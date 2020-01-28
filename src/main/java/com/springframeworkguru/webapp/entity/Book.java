@@ -1,6 +1,7 @@
 package com.springframeworkguru.webapp.entity;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.AttributeOverride;
@@ -9,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -42,6 +44,9 @@ public class Book extends BaseEntity {
             ))
     private Set<Author> authors = new HashSet<>();
 
+    @OneToMany(mappedBy = "person")
+    List<LibraryEntry> persons;
+    
     public Book() {
     }
 
@@ -88,6 +93,14 @@ public class Book extends BaseEntity {
 
     public void setAuthors(Set<Author> authors) {
         this.authors = authors;
+    }
+
+    public List<LibraryEntry> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(List<LibraryEntry> persons) {
+        this.persons = persons;
     }
 
     @Override
