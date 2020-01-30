@@ -24,7 +24,7 @@ public class Person {
     @OneToMany(mappedBy = "owner")
     private List<Car> cars = new ArrayList<>();
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "book")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "person")
     private List<LibraryEntry> libraryEntries = new ArrayList<>();
     
     public String getId() {

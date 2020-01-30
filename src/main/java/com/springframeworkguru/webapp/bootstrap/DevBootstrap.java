@@ -100,12 +100,13 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent>{
         person3.setId("person3");
         person3.setName("Bill");
         
-        LibraryEntry entry = new LibraryEntry();
-        entry.setBook(ddd);
-        entry.setPerson(person3);
+        LibraryEntry entry = new LibraryEntry(ddd, person3);
+        //entry.setBook(ddd);
+        //entry.setPerson(person3);
         entry.setReservationDate("today");
         
         person3.addLibraryRent(entry);
         personRepository.save(person3);
+        
     }
 }

@@ -2,30 +2,43 @@ package com.springframeworkguru.webapp.entity;
 
 import java.util.Objects;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "library_entries")
-@AttributeOverride(name="id", column=@Column(name="entry_id"))
-public class LibraryEntry extends BaseEntity {
+public class LibraryEntry  {
     
     private static final long serialVersionUID = 1L;
 
+    @EmbeddedId
+    LibraryEntryId id;
+    
     @ManyToOne
+    @MapsId("personId")
     @JoinColumn(name = "person_id", columnDefinition = "varchar(25)", nullable = true, insertable = true)
     Person person;
  
     @ManyToOne
+    @MapsId("bookId")
     @JoinColumn(name = "book_id", nullable = true, insertable = true)
     Book book;
  
     String reservationDate;
 
+    @SuppressWarnings("unused")
+    private LibraryEntry() {}
+
+    public LibraryEntry(Book book, Person person) {
+        this.book = book;
+        this.person = person;
+        this.id = new LibraryEntryId(book.getId(), person.getId()); 
+    }
+    
     public Person getPerson() {
         return person;
     }

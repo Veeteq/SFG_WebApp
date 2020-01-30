@@ -44,7 +44,7 @@ public class Book extends BaseEntity {
             ))
     private Set<Author> authors = new HashSet<>();
 
-    @OneToMany(mappedBy = "person")
+    @OneToMany(mappedBy = "book")
     List<LibraryEntry> persons;
     
     public Book() {

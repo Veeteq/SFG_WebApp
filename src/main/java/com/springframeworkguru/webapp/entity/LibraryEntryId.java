@@ -11,7 +11,7 @@ public class LibraryEntryId implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Column(name = "book_id")
-    private String bookId;
+    private Long bookId;
  
     @Column(name = "person_id")
     private String personId;
@@ -19,16 +19,16 @@ public class LibraryEntryId implements Serializable {
     @SuppressWarnings("unused")
     private LibraryEntryId() {}
  
-    public LibraryEntryId(String bookId, String personId) {
+    public LibraryEntryId(Long bookId, String personId) {
         this.bookId = bookId;
         this.personId = personId;
     }
  
-    public String getBookId() {
+    public Long getBookId() {
         return bookId;
     }
 
-    public void setBookId(String bookId) {
+    public void setBookId(Long bookId) {
         this.bookId = bookId;
     }
 
