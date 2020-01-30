@@ -1,5 +1,7 @@
 package com.springframeworkguru.webapp.entity;
 
+import java.util.Objects;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -47,4 +49,21 @@ public class LibraryEntry extends BaseEntity {
     public void setReservationDate(String reservationDate) {
         this.reservationDate = reservationDate;
     }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+ 
+        if (o == null || getClass() != o.getClass())
+            return false;
+ 
+        LibraryEntry that = (LibraryEntry) o;
+        return Objects.equals(book, that.book) &&
+               Objects.equals(person, that.person);
+    }
+ 
+    @Override
+    public int hashCode() {
+        return Objects.hash(book, person);
+    }    
 }
